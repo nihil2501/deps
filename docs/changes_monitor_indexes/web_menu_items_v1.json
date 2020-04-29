@@ -5,9 +5,7 @@
   "deps": [
     {
       "repo": "Leafly",
-      "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Services/Services/Stores/ElasticMenuItemService.cs",
-      "q": null,
-      "deps": []
+      "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Services/Services/Stores/ElasticMenuItemService.cs"
     }
   ]
 }

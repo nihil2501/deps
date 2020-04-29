@@ -5,7 +5,7 @@ module Deps
     attr_reader :repo, :url
     attr_accessor :q
 
-    def initialize(repo, url, q)
+    def initialize(repo, url, q = nil)
       @repo = repo
       @url = url
       @q = q
@@ -13,7 +13,7 @@ module Deps
 
     def resolve
       deps.each do |dep|
-        dep.q ||= Deps::Prompt.perform(dep, q)
+        Deps::Prompt.perform(dep, q)
         dep.resolve
       end
     end
@@ -21,9 +21,21 @@ module Deps
     def deps
       @deps ||=
         [].tap do |memo|
-          results = Deps::Search.perform(q, exclude: repo)
+          results = Deps::Search.perform(q)
           memo.concat(results)
         end
+    end
+
+    module Terminations
+      ALL = [
+        IGNORED = :ignored,
+        DONE = :done
+      ].freeze
+    end
+
+    Terminations::ALL.each do |t|
+      define_method(:"#{t}!") { @termination = t }
+      define_method(:"#{t}?") { @termination == t }
     end
   end
 end

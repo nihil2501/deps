@@ -1,5 +1,11 @@
 {
   "repo": "changes-monitor",
   "url": "https://github.com/Leafly-com/changes-monitor/blob/2896e287e6fe349b7f4caacfa748ae0901607b39/lib/models/menu_items.py",
-  "q": "menu_item_v3"
+  "q": "menu_item_v3",
+  "deps": [
+    {
+      "repo": "biz-reservations",
+      "url": "https://github.com/Leafly-com/biz-reservations/blob/dcfe2886172f503d231016d352a1f3fd72eafea6/api/elasticSearch.js"
+    }
+  ]
 }

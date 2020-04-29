@@ -33,5 +33,5 @@ dep = Deps::Marshal.load(dep)
 dep.resolve
 
 dep = Deps::Marshal.dump(dep)
-dep = JSON.dump(dep)
+dep = JSON.pretty_generate(dep) + "\n"
 File.write(file, dep)

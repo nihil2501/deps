@@ -1,5 +1,55 @@
 {
   "repo": "changes-monitor",
-  "url": "https://github.com/Leafly-com/changes-monitor/blob/2896e287e6fe349b7f4caacfa748ae0901607b39/lib/models/menu_items.py",
-  "q": "menu_item_hub_v1"
+  "url": "https://github.com/Leafly-com/changes-monitor/blob/f9713006e6cb3f1f83f802433011919edd722b1b/lib/models/menu_item_hub.py",
+  "q": "menu_item_hub_v1",
+  "deps": [
+    {
+      "repo": "api-og",
+      "url": "https://github.com/Leafly-com/api-og/blob/1c51a10177cd0df31faee88f2c2817b9a3404a93/app/models/v1/hubs/hub.rb",
+      "q": "V1::Hubs::Hub",
+      "deps": [
+        {
+          "repo": "api-og",
+          "url": "https://github.com/Leafly-com/api-og/blob/bc4f1aaf5220eadb75f6d36db0a4eb3f871eff7e/app/services/hub_service/dispensary_search.rb",
+          "q": "dispensary_hub",
+          "deps": [
+            {
+              "repo": "web-strain-explorer",
+              "url": "https://github.com/Leafly-com/web-strain-explorer/blob/181937c932b88069110f1cd79cc1cef05ed079f8/routes/api.js"
+            }
+          ]
+        },
+        {
+          "repo": "api-og",
+          "url": "https://github.com/Leafly-com/api-og/blob/4e3a9859675eb862eae5d77177f7c8455171100d/app/services/hub_service/menu_item_search.rb",
+          "q": "menu_item_hub",
+          "deps": [
+            {
+              "repo": "leafly-android",
+              "url": "https://github.com/Leafly-com/leafly-android/blob/d21d1ac9f9985d065085a4b9dffb3f5b4dda5fdb/core-network/src/main/kotlin/leafly/android/core/network/apis/ApiOgApi.kt"
+            },
+            {
+              "repo": "leafly-ios",
+              "url": "https://github.com/Leafly-com/leafly-ios/blob/2d351e6dd4b461af9c7b8dd4ea94837436f166a0/Base/Network/API/LeaflyApi.swift"
+            },
+            {
+              "repo": "web-strain-explorer",
+              "url": "https://github.com/Leafly-com/web-strain-explorer/blob/181937c932b88069110f1cd79cc1cef05ed079f8/routes/api.js"
+            }
+          ]
+        },
+        {
+          "repo": "api-og",
+          "url": "https://github.com/Leafly-com/api-og/blob/e4cd0520c01b8c266d2d04d8f1aee4d13b0eb442/app/services/hub_service/menu_item_carousel.rb",
+          "q": "menu_item_carousel",
+          "deps": [
+            {
+              "repo": "web-strain-explorer",
+              "url": "https://github.com/Leafly-com/web-strain-explorer/blob/181937c932b88069110f1cd79cc1cef05ed079f8/routes/api.js"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

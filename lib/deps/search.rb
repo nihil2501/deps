@@ -6,9 +6,10 @@ module Deps
   module Search
     GITHUB_ORG = "Leafly-com"
     GITHUB_TOKEN = ENV["GITHUB_TOKEN"]
+    THIS_REPO = "deps"
 
     class << self
-      def perform(q, exclude:)
+      def perform(q)
         memo = []
         return memo if q.blank?
 
@@ -21,7 +22,7 @@ module Deps
 
         results[:items].each do |result|
           repo = result[:repository]
-          next if repo[:name] == exclude
+          next if repo[:name] == THIS_REPO
 
           next unless
             result[:text_matches].any? do |match|
@@ -31,12 +32,8 @@ module Deps
           repo = @github.repo(repo[:id])
           next if repo[:archived]
 
-          memo <<
-            Deps::Dep.new(
-              repo[:name],
-              result[:html_url],
-              nil
-            )
+          dep = Deps::Dep.new(repo[:name], result[:html_url])
+          memo << dep
         end
 
         memo

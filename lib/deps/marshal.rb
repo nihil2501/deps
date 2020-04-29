@@ -4,21 +4,27 @@ module Deps
   class Marshal
     class << self
       def dump(dep)
-        deps = dep.deps.map { |d| dump(d) }
+        memo = {}
+        return memo if dep.ignored?
 
-        {
-          "repo" => dep.repo,
-          "url" => dep.url,
-          "q" => dep.q,
-          "deps" => deps
-        }
+        memo.merge!("repo" => dep.repo, "url" => dep.url)
+        return memo if dep.done?
+
+        memo.merge!("q" => dep.q, "deps" => [])
+        dep.deps.each do |d|
+          if d = dump(d).presence
+            memo["deps"] << d
+          end
+        end
+
+        memo
       end
 
-      def load(hash)
+      def load(dep)
         Deps::Dep.new(
-          hash["repo"],
-          hash["url"],
-          hash["q"]
+          dep["repo"],
+          dep["url"],
+          dep["q"]
         )
       end
     end
