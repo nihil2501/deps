@@ -1,2 +1,2 @@
 # Dependency Explorer
-An interactive tool for building documentation of dependency graphs.
+An interactive tool for building documentation of services dependency graphs at Leafly.
