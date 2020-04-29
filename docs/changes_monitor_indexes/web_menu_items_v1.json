@@ -1,0 +1,13 @@
+{
+  "repo": "changes-monitor",
+  "url": "https://github.com/Leafly-com/changes-monitor/blob/2896e287e6fe349b7f4caacfa748ae0901607b39/lib/models/menu_items.py",
+  "q": "web_menu_items_v1",
+  "deps": [
+    {
+      "repo": "Leafly",
+      "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Services/Services/Stores/ElasticMenuItemService.cs",
+      "q": null,
+      "deps": []
+    }
+  ]
+}
