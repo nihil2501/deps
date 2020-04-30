@@ -1,9 +1,10 @@
-# Dependency Explorer
 An interactive tool for building documentation of service dependency graphs at Leafly.
 
 ## Setup
-`asdf install`
-`bundle install`
+```
+asdf install
+bundle install
+```
 
 https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line
 Generate a Github personal access token with OAuth scopes of (perhaps too much?):
