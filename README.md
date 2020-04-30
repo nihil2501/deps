@@ -21,3 +21,11 @@ Then assign it to `OCTOKIT_ACCESS_TOKEN` in `.env`
 
 ## Usage
 `./deps.sh docs/path/to/file.json`
+
+This file should be seeded with an initial query like
+```json
+{
+  "q": "search_menu_item_v3"
+}
+```
+Then the tool will help you fill out the rest of the graph.
