@@ -15,7 +15,7 @@ Generate a Github personal access token with OAuth scopes of (perhaps too much?)
 * `repo`
 * `user`
 
-Make sure you Enable SSO for Leafly-com.
+Make sure you `Enable SSO` for `Leafly-com`
 Then assign it to `OCTOKIT_ACCESS_TOKEN` in `.env`
 
 ## Usage
