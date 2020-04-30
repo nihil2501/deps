@@ -1,4 +1,4 @@
-An interactive tool for building documentation of service dependency graphs at Leafly.
+An interactive tool for generating documentation of service dependency graphs at Leafly.
 
 ## Setup
 ```
