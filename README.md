@@ -1,4 +1,5 @@
 An interactive tool for generating documentation of service dependency graphs at Leafly.
+Uses Github's code search API.
 
 ## Setup
 ```
