@@ -1,14 +1,38 @@
 # frozen_string_literal: true
 
 require "octokit"
+require "faraday-http-cache"
 
 module Deps
   class Search
+    GITHUB_ORG = "Leafly-com"
+    THIS_REPO = "deps"
+
     class << self
       def perform(q)
         new(q).perform
       end
+
+      def client
+        unless defined? @client
+          @client = Octokit::Client.new
+          # Unfortunately `auto_paginate` silently stops collecting results on
+          # rate limit:
+          #   https://github.com/octokit/octokit.rb/blob/95603295203ad86b5e2abc4426b85111577bbc5b/lib/octokit/connection.rb#L87
+          @client.auto_paginate = true
+
+          @client.middleware.response :logger, Deps.logger, log_level: :debug
+          @client.middleware.use :http_cache,
+            serializer: ::Marshal,
+            logger: Deps.logger,
+            shared_cache: false
+        end
+
+        @client
+      end
     end
+
+    delegate :client, to: :class
 
     def initialize(q)
       @q = q
@@ -18,7 +42,7 @@ module Deps
       memo = []
       return memo if @q.blank?
 
-      search.items.each do |item|
+      get_items.each do |item|
         repo = item.repository
         next if repo.name == THIS_REPO
 
@@ -37,10 +61,6 @@ module Deps
     end
 
     private
-      GITHUB_ORG = "Leafly-com"
-      GITHUB_TOKEN = ENV["GITHUB_TOKEN"]
-      THIS_REPO = "deps"
-
       def get_fragments(item)
         [].tap do |memo|
           item.text_matches.each do |match|
@@ -54,34 +74,17 @@ module Deps
         end
       end
 
-      def search
+      def get_items
         q = "#{@q} org:#{GITHUB_ORG}"
-        opts = {
-          accept: "application/vnd.github.v3.text-match+json",
-          per_page: 100 # github's max
-        }
+        opts = { accept: "application/vnd.github.v3.text-match+json" }
 
-        client.search_code(q, opts).tap do
-          rel = client.last_response.rels[:next]
-          if rel.present?
-            raise \
-              RuntimeError,
-              "Too many results"
-          end
-        end
+        client.
+          search_code(q, opts).
+          items
       end
 
       def get_repo(repo)
         client.repo(repo.id)
-      end
-
-      def client
-        unless defined? @client
-          @client = Octokit::Client.new(access_token: GITHUB_TOKEN)
-          # @client.middleware.response :logger
-        end
-
-        @client
       end
   end
 end

@@ -3,36 +3,30 @@
 require "rubygems"
 require "bundler/setup"
 require "pry"
-require "active_support"
 require "active_support/core_ext/object/blank"
 require "active_support/core_ext/object/inclusion"
+require "active_support/core_ext/module/delegation"
 
-require 'dotenv'
+require "dotenv"
 Dotenv.load
 
-$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "deps/dep"
 require "deps/search"
 require "deps/prompt"
 require "deps/prompt/actions"
 require "deps/marshal"
 
-require "json"
+require "logger"
 
-file = ARGV[0]
-ARGV.clear
-if file.nil?
-  raise \
-    ArgumentError,
-    "Must pass a file"
+module Deps
+  class << self
+    def logger
+      unless defined? @logger
+        @logger = Logger.new(STDOUT)
+        @logger.level = ENV["LOG_LEVEL"] || Logger::INFO
+      end
+
+      @logger
+    end
+  end
 end
-
-dep = File.read(file)
-dep = JSON.load(dep)
-dep = Deps::Marshal.load(dep)
-
-dep.resolve
-
-dep = Deps::Marshal.dump(dep)
-dep = JSON.pretty_generate(dep) + "\n"
-File.write(file, dep)
