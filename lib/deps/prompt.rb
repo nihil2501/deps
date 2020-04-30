@@ -18,15 +18,18 @@ module Deps
     def perform
       fragments =
         @dep.fragments.map.with_index do |fragment, i|
+          fragment.gsub!(@q, @q.bold)
+          fragment.gsub!("\n", "\n\s\s")
+
           <<~HEREDOC
             \s\s#{"Fragment #{i+1}".underline}
-            \s\s#{fragment.gsub("\n", "\n\s\s").italic}
+            \s\s#{fragment}
           HEREDOC
         end
 
       message =
         <<~HEREDOC
-          \nFound a new dependant of #{@q.light_red.bold}
+          \nFound a new dependant of #{@q.bold}
 
           #{fragments.join("\n\n")}
 
