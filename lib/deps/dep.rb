@@ -3,7 +3,7 @@
 module Deps
   class Dep
     attr_reader :repo, :url
-    attr_accessor :q
+    attr_accessor :q, :fragments
 
     def initialize(repo, url, q = nil)
       @repo = repo

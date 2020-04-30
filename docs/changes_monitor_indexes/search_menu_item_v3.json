@@ -5,58 +5,42 @@
   "deps": [
     {
       "repo": "mobile-api",
-      "url": "https://github.com/Leafly-com/mobile-api/blob/e749bfab641991a3d2764141aea1ed504f80e22b/src/fixtures/elasticsearch/search_menu_item_v3/analyzer.json",
-      "q": null,
-      "deps": []
-    },
-    {
-      "repo": "mobile-api",
       "url": "https://github.com/Leafly-com/mobile-api/blob/29825e6f9b789df2974bb9d12142d0feb506d57c/src/support/datastores.py",
       "q": "menu_for_dispensary",
       "deps": [
         {
           "repo": "iOS-Theseus-feature-networking",
           "url": "https://github.com/Leafly-com/iOS-Theseus-feature-networking/blob/e51b80d2b288a101140e9afa8ef01e475c1968f2/Networking/Api/DispensaryApiClient.swift",
-          "q": null,
-          "deps": []
+          "q": "DispensaryEndpoints.menu",
+          "deps": [
+
+          ]
         },
         {
           "repo": "web-dispensary",
-          "url": "https://github.com/Leafly-com/web-dispensary/blob/3d15dd10317def9c0acc9172795aa0132bb408a4/server/api/routes/menu/getMenuRoute.js",
-          "q": null,
-          "deps": []
+          "url": "https://github.com/Leafly-com/web-dispensary/blob/3d15dd10317def9c0acc9172795aa0132bb408a4/server/api/routes/menu/getMenuRoute.js"
         },
         {
           "repo": "leafly-ios",
-          "url": "https://github.com/Leafly-com/leafly-ios/blob/f97311860ed56cee2283185d4d1de82fac024a03/Base/Network/API/LeaflyMobileApi.swift",
-          "q": null,
-          "deps": []
+          "url": "https://github.com/Leafly-com/leafly-ios/blob/f97311860ed56cee2283185d4d1de82fac024a03/Base/Network/API/LeaflyMobileApi.swift"
         },
         {
           "repo": "leafly-ios",
-          "url": "https://github.com/Leafly-com/leafly-ios/blob/e203e63c909e96d81016e1bca9b72f323156a4a8/Leafly/Services/Networking/NetworkAPI+Dispensaries.swift",
-          "q": null,
-          "deps": []
+          "url": "https://github.com/Leafly-com/leafly-ios/blob/e203e63c909e96d81016e1bca9b72f323156a4a8/Leafly/Services/Networking/NetworkAPI+Dispensaries.swift"
         }
       ]
     },
     {
       "repo": "web-dispensary",
-      "url": "https://github.com/Leafly-com/web-dispensary/blob/dfba3a234ae724df3101b7995005ea3c50ec8e34/server/api/routes/menuItem/getMenuItemRoute.js",
-      "q": null,
-      "deps": []
+      "url": "https://github.com/Leafly-com/web-dispensary/blob/dfba3a234ae724df3101b7995005ea3c50ec8e34/server/api/routes/menuItem/getMenuItemRoute.js"
     },
     {
       "repo": "api-og",
       "url": "https://github.com/Leafly-com/api-og/blob/cfd1491a447241cb44dca0a0f741907c4ea0dbbb/app/models/v1/feeds/homepage/blocks/strains.rb",
-      "q": "feeds/strains",
-      "deps": []
-    },
-    {
-      "repo": "mobile-api",
-      "url": "https://github.com/Leafly-com/mobile-api/blob/9aed471ad6d43ce5a3a06efcebfb07e14e62e42c/src/models/menu_item.py",
-      "q": null,
-      "deps": []
+      "q": "Blocks::Strains",
+      "deps": [
+
+      ]
     }
   ]
 }

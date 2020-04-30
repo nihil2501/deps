@@ -16,17 +16,24 @@ module Deps
     end
 
     def perform
+      fragments =
+        @dep.fragments.map.with_index do |fragment, i|
+          <<~HEREDOC
+            \s\s#{"Fragment #{i+1}".underline}
+            \s\s#{fragment.gsub("\n", "\n\s\s").italic}
+          HEREDOC
+        end
+
       message =
         <<~HEREDOC
+          \nFound a new dependant of #{@q.light_red.bold}
 
-          Found a new dependant of #{@q.red}
+          #{fragments.join("\n\n")}
+
           URL: #{@dep.url.light_blue}
-          Repo: #{@dep.repo.green}
+          Repo: #{@dep.repo.light_green.bold}
 
-          Choose one of...
-          (q)uery    Find further dependants
-          (d)one     There are no further dependants
-          (i)gnore   This is not a dependancy
+          #{menu.chomp}
         HEREDOC
 
       puts message
@@ -35,18 +42,27 @@ module Deps
 
     def capture
       case input = gets.chomp.downcase
-      when "q"
+      when Deps::Prompt::Actions::QUERY.input
         puts "\nEnter a query..."
         @dep.q = gets.chomp
-      when "d"
+      when Deps::Prompt::Actions::DONE.input
         @dep.done!
-      when "i"
+      when Deps::Prompt::Actions::IGNORE.input
         @dep.ignored!
       else
-        puts "\nInvalid input: #{input}"
-        puts "Choose one of (q)uery, (d)one, (i)gnore..."
+        puts "\n#{menu}"
         capture
       end
+    end
+
+    def menu
+      actions = Deps::Prompt::Actions::ALL
+      actions = actions.map(&:full_prompt)
+
+      <<~HEREDOC
+        Choose one of...
+        #{actions.join("\n")}
+      HEREDOC
     end
   end
 end

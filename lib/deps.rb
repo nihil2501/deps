@@ -14,6 +14,7 @@ $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "deps/dep"
 require "deps/search"
 require "deps/prompt"
+require "deps/prompt/actions"
 require "deps/marshal"
 
 require "json"
