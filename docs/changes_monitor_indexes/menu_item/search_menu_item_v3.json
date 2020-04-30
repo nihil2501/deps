@@ -10,11 +10,7 @@
       "deps": [
         {
           "repo": "iOS-Theseus-feature-networking",
-          "url": "https://github.com/Leafly-com/iOS-Theseus-feature-networking/blob/e51b80d2b288a101140e9afa8ef01e475c1968f2/Networking/Api/DispensaryApiClient.swift",
-          "q": "DispensaryEndpoints.menu",
-          "deps": [
-
-          ]
+          "url": "https://github.com/Leafly-com/iOS-Theseus-feature-networking/blob/e51b80d2b288a101140e9afa8ef01e475c1968f2/Networking/Api/DispensaryApiClient.swift"
         },
         {
           "repo": "web-dispensary",
@@ -37,9 +33,35 @@
     {
       "repo": "api-og",
       "url": "https://github.com/Leafly-com/api-og/blob/cfd1491a447241cb44dca0a0f741907c4ea0dbbb/app/models/v1/feeds/homepage/blocks/strains.rb",
-      "q": "Blocks::Strains",
+      "q": "homepage.json",
+      "deps": [
+        {
+          "repo": "leafly-ios",
+          "url": "https://github.com/Leafly-com/leafly-ios/blob/eeacfaa1f842ed846c8ffbe9ee4e99193ebc7859/Leafly/Services/Networking/NetworkAPI+Feeds.swift"
+        },
+        {
+          "repo": "leafly-android",
+          "url": "https://github.com/Leafly-com/leafly-android/blob/d21d1ac9f9985d065085a4b9dffb3f5b4dda5fdb/home/src/main/kotlin/leafly/android/home/core/api/HomeFeedApi.kt"
+        }
+      ]
+    },
+    {
+      "repo": "api-og",
+      "url": "https://github.com/Leafly-com/api-og/blob/cfd1491a447241cb44dca0a0f741907c4ea0dbbb/app/models/v1/feeds/homepage/blocks/strains.rb",
+      "q": "homepage_blocks.json",
       "deps": [
 
+      ]
+    },
+    {
+      "repo": "api-og",
+      "url": "https://github.com/Leafly-com/api-og/blob/cfd1491a447241cb44dca0a0f741907c4ea0dbbb/app/models/v1/feeds/homepage/blocks/strains.rb",
+      "q": "strains.json",
+      "deps": [
+        {
+          "repo": "web-home",
+          "url": "https://github.com/Leafly-com/web-home/blob/8d3e28975df3e7b150b1772d2e8d0d92e9d417bf/server/api/urls.js"
+        }
       ]
     }
   ]
