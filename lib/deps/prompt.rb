@@ -23,12 +23,13 @@ module Deps
 
           <<~HEREDOC
             \s\s#{"Fragment #{i+1}".underline}
-            \s\s#{fragment}
+            \n\s\s#{fragment}
           HEREDOC
         end
 
       message =
         <<~HEREDOC
+          \n#{"-------------------------#{"-" * @q.size}".bold}
           \nFound a new dependant of #{@q.bold}
 
           #{fragments.join("\n\n")}
@@ -46,12 +47,25 @@ module Deps
     def capture
       case input = gets.chomp.downcase
       when Deps::Prompt::Actions::QUERY.input
-        puts "\nEnter a query..."
-        @dep.q = gets.chomp
+        clones = []
+
+        loop do
+          puts "\nEnter a new query (or just hit #{"ENTER".bold} when finished)..."
+          new_q = gets.chomp
+          if new_q.blank?
+            return clones
+          end
+
+          clone = @dep.clone
+          clones << clone
+          clone.q = new_q
+        end
       when Deps::Prompt::Actions::DONE.input
         @dep.done!
+        [@dep]
       when Deps::Prompt::Actions::IGNORE.input
         @dep.ignored!
+        [@dep]
       else
         puts "\n#{menu}"
         capture

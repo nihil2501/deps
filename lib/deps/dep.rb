@@ -12,18 +12,19 @@ module Deps
     end
 
     def resolve
-      deps.each do |dep|
-        Deps::Prompt.perform(dep, q)
-        dep.resolve
-      end
+      deps.each(&:resolve)
     end
 
     def deps
-      @deps ||=
-        [].tap do |memo|
-          results = Deps::Search.perform(q)
-          memo.concat(results)
+      unless defined? @deps
+        @deps = []
+        Deps::Search.perform(q).each do |dep|
+          clones = Deps::Prompt.perform(dep, q)
+          @deps.concat(clones)
         end
+      end
+
+      @deps
     end
 
     module Terminations

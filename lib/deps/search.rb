@@ -75,11 +75,11 @@ module Deps
       end
 
       def get_items
-        q = "#{@q} org:#{GITHUB_ORG}"
+        query = "#{@q} org:#{GITHUB_ORG}"
         opts = { accept: "application/vnd.github.v3.text-match+json" }
 
         client.
-          search_code(q, opts).
+          search_code(query, opts).
           items
       end
 
