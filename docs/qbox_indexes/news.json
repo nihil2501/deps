@@ -12,58 +12,10 @@
       "url": "https://github.com/Leafly-com/Leafly/blob/ebb59b7de8df5a9744f8fd998b5edaf98bc67b82/Web/Controllers/MobileController.cs"
     },
     {
-      "repo": "leafly-services",
-      "url": "https://github.com/Leafly-com/leafly-services/blob/e462cdfb118974dccd40f8f380fdf966d6d9b184/Leafly.Services/Services/News/ElasticNewsService.cs"
-    },
-    {
       "repo": "Leafly",
       "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Infrastructure/Services/Strains/StrainService.cs",
-      "q": "ILegacyStrainService",
+      "q": "GetStrainOverview",
       "deps": [
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Controllers/StrainIdentifier.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Controllers/ErrorController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/ebb59b7de8df5a9744f8fd998b5edaf98bc67b82/Web/Controllers/MobileController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Controllers/CdnController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Controllers/SearchController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Controllers/Admin2/Admin2Controller.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Controllers/ReviewController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/dcf218996cdfef8e6cd8865c44204f132bf4c87f/Web/Controllers/AdminController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/7b6f9ba5012b198f25c75157e53ee2b9c0f1dd49/Web/Controllers/ExploreController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/e3d4563fa67cbea19683bd7d48fa7a7bfdd386c5/Web/Controllers/MeController.cs"
-        },
-        {
-          "repo": "Leafly",
-          "url": "https://github.com/Leafly-com/Leafly/blob/0669e2d8b0a1462a1c525a07f4cac298e3c744d8/Web/Controllers/HomeController.cs"
-        },
         {
           "repo": "Leafly",
           "url": "https://github.com/Leafly-com/Leafly/blob/7b6f9ba5012b198f25c75157e53ee2b9c0f1dd49/Web/Controllers/StrainController.cs"
@@ -80,7 +32,14 @@
     },
     {
       "repo": "Leafly",
-      "url": "https://github.com/Leafly-com/Leafly/blob/f22f7a134dce9da029190c1f855f916e08e84458/Web/Controllers/API2/ApiStrainController.cs"
+      "url": "https://github.com/Leafly-com/Leafly/blob/f22f7a134dce9da029190c1f855f916e08e84458/Web/Controllers/API2/ApiStrainController.cs",
+      "q": "GetStrainArticles",
+      "deps": [
+        {
+          "repo": "Leafly",
+          "url": "https://github.com/Leafly-com/Leafly/blob/f22f7a134dce9da029190c1f855f916e08e84458/Web/Controllers/API2/ApiStrainController.cs"
+        }
+      ]
     },
     {
       "repo": "Leafly",
