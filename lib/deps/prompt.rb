@@ -29,8 +29,7 @@ module Deps
 
       message =
         <<~HEREDOC
-          \n#{"-------------------------#{"-" * @q.size}".bold}
-          \nFound a new dependant of #{@q.bold}
+          Found a new dependant of #{@q.bold}
 
           #{fragments.join("\n\n")}
 
@@ -40,6 +39,7 @@ module Deps
           #{menu.chomp}
         HEREDOC
 
+      puts "\e[H\e[2J"
       puts message
       capture
     end
