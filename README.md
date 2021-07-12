@@ -30,3 +30,7 @@ This file should be seeded with an initial query like
 }
 ```
 Then the tool will help you fill out the rest of the graph.
+
+## TODO
+* Make it progressive / possible to pick up where you left off (if it doesn't already do this, I can't remember)
+* Depth or breadth first search preferable? Make this a user option?
